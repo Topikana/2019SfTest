@@ -35,16 +35,10 @@ class DefaultController extends Controller
         $result = curl_exec($ch);
         // fermeture des ressources
         curl_close($ch);
-        /*curl_multi_getcontent($ch);
-        $xml = simplexml_load_string($test);
-        $test = file_get_contents($url);*/
 
         $result = json_decode($result, true);
-        dump($result);
 
         $hero = $result['data']['results'];
-
-        dump($hero);
 
         return $this->render('@App/index.html.twig',[ 'heros' => $hero]);
     }
@@ -64,7 +58,6 @@ class DefaultController extends Controller
         $hash = md5($concat);
 
         $Id = $id->get('id');
-        dump($Id);
 
         $url = "https://gateway.marvel.com:443/v1/public/characters/".$Id."?ts=".$ts."&apikey=".$apiKeyPublic."&hash=".$hash;
 
@@ -82,18 +75,15 @@ class DefaultController extends Controller
 
         $detail = $result['data']['results'];
 
-        dump($detail);
+        $comic1[] = $result['data']['results'][0]['comics']['items'][0]['name'];
+        $comic2[] = $result['data']['results'][0]['comics']['items'][1]['name'];
+        $comic3[] = $result['data']['results'][0]['comics']['items'][2]['name'];
 
-        $comic1 = $result['data']['results'][0]['comics']['items'][0]['name'];
-        $comic2 = $result['data']['results'][0]['comics']['items'][1]['name'];
-        $comic3 = $result['data']['results'][0]['comics']['items'][2]['name'];
-//        dump($comic);
+        $comic = array_merge( $comic1, $comic2, $comic3);
 
         return $this->render('@App/detailsHero.html.twig', [
             'details' => $detail,
-            'comics1' => $comic1,
-            'comics2' => $comic2,
-            'comics3' => $comic3,
+            'comics'  => $comic,
             ]);
     }
 
