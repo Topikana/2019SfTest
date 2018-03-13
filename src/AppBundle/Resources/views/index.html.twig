@@ -1,0 +1,22 @@
+{% include '@App/layouts/head.html.twig' %}
+{% block body %}
+    <div class="container-fluid index-home">
+        {% for result in heros %}
+            <div class="">
+    <div class="col-sm-6 col-md-4 hero">
+        <div class="thumbnail">
+            <img src="{{ result.thumbnail.path }}.{{ result.thumbnail.extension }}"  alt="{{ result.name }}" class="picture">
+            <div class="caption">
+                <a href="{{ path('detail_hero', { 'id' : result.id }) }}" > {{ result.name }} </a>
+                {#<p>...</p>#}
+                {#<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>#}
+            </div>
+        </div>
+    </div>
+</div>
+        {% endfor %}
+    </div>
+
+
+{% include '@App/layouts/foot.html.twig' %}
+{% endblock %}
