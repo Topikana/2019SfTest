@@ -1,0 +1,18 @@
+{% extends '@App/base.html.twig' %}
+{% block body %}
+<div style="background-color: rgba(255, 255, 255, 0.5)">
+    <h1 align="center">Heros Marvel List</h1>
+    <div class="container-fluid index-home"  align="center">
+        {% for result in heros %}
+            <div class="circle">
+                <div class="col-sm-5 col-md-3 hero" style="">
+                    <img src="{{ result.thumbnail.path }}.{{ result.thumbnail.extension }}"  alt="{{ result.name }}" class="img-circle" width="260" height="236">
+                    <h2 class="caption">
+                        <a href="{{ path('detail_hero', { 'id' : result.id }) }}"> {{ result.name }} </a>
+                    </h2>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

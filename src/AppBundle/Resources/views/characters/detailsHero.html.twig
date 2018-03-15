@@ -1,0 +1,24 @@
+{% extends '@App/base.html.twig' %}
+{% block body %}
+    <div class="col-sm-4 col-sm-offset-4" style="background-color: rgba(255, 255, 255, 0.5)">
+        <h1 align="center">Hero Detail</h1>
+        <div class="picture" align="center">
+            {% for detail in details %}
+            <img src="{{ detail.thumbnail.path }}.{{ detail.thumbnail.extension }}"  alt="{{ detail.name }}" class="img-circle" width="260" height="236">
+        </div>
+        <div align="center" class="description">
+            <h2>{{ detail.name }}</h2>
+            <ul>
+                <li>{{ detail.description }}</li>
+                <li>Comics availables : {{ detail.comics.available }}</li>
+                <li>{{ comics[0] }}</li>
+                <li>{{ comics[1] }}</li>
+                <li>{{ comics[2] }}</li>
+            </ul>
+            <div class="btn btn-danger dropdown-toggle">
+                <a href="{{ path ('homepage') }}">Back List</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

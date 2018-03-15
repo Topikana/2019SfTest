@@ -1,0 +1,51 @@
+/*background*/
+body
+{
+ background-image:  url("/assets/image/24371.jpg");
+}
+
+/*HeroList page CSS*/
+h1
+{
+ color : black;
+}
+
+a
+{
+ color : black;
+}
+
+.container-fluid
+{
+ margin-top : 3.2em;
+}
+
+.caption
+{
+ margin-top: 0.3em;
+ margin-bottom: 0.8em;
+}
+
+/*detailsHero page CSS*/
+li
+{
+ color : black;
+}
+
+.picture
+{
+ margin-top: 10em;
+ margin-bottom: 3em;
+}
+
+.description
+{
+ margin-top: 1.3em;
+ margin-bottom: 1.3em;
+ font-weight: bold;
+}
+
+h2
+{
+ color : black;
+}

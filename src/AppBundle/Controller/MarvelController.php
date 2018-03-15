@@ -6,13 +6,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class MarvelController extends Controller
 {
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction()
     {
+        //Put your Public and Private Key here.
+        //You can find this keys in your developper account https://developer.marvel.com/account
         $apiKeyPublic = "b19537ad3363e8ab947151b2fb216ed3";
         $apiKeyPrivate = "219b7835b034c47b33840a87012d8694dfc8602c";
         $ts = time();
@@ -40,7 +42,7 @@ class DefaultController extends Controller
 
         $hero = $result['data']['results'];
 
-        return $this->render('@App/index.html.twig',[ 'heros' => $hero]);
+        return $this->render('@App/characters/listHeros.html.twig',[ 'heros' => $hero]);
     }
 
     /**
@@ -81,7 +83,7 @@ class DefaultController extends Controller
 
         $comic = array_merge( $comic1, $comic2, $comic3);
 
-        return $this->render('@App/detailsHero.html.twig', [
+        return $this->render('@App/characters/detailsHero.html.twig', [
             'details' => $detail,
             'comics'  => $comic,
             ]);
